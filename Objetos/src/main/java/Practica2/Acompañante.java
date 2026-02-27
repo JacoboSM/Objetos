@@ -5,10 +5,25 @@ public class Acompañante extends MutxamelFC implements FuncionesIntegrantes{
     private Jugador jugador;
     private String parentesco;
 
-    public Acompañante(String nombre, int edad, String parentesco) {
+    public Acompañante(String nombre, int edad,Jugador jugador, String parentesco) {
 
         super(nombre, edad);
+
+        if (jugador.getCategoria() != Equipos.SENIOR){
+
+            throw new NoSeniorException();
+
+        }
+
         this.parentesco = parentesco;
+
+        System.out.println("Acompañante : " + getNombre() + " creado");
+
+    }
+
+    public void animarEquipo(){
+
+        System.out.println("Boca yo te amo, siempre te sigo a todo lados, de corazón pongan más huevo, porque a Boca lo queremos "); {}
 
     }
 
@@ -30,12 +45,6 @@ public class Acompañante extends MutxamelFC implements FuncionesIntegrantes{
     public void celebrarGol(){
 
         System.out.println(getNombre() + " se levanta junto a los demas, mira fijamente al jugador con la pelota, Grita GOL! al coro de todos los demas y empiezan a correr.");
-
-    }
-
-    public void animarEquipo(){
-
-        System.out.println("Boca yo te amo, siempre te sigo a todo lados, de corazón pongan más huevo, porque a Boca lo queremos "); {}
 
     }
 

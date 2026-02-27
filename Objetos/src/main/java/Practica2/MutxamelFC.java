@@ -1,5 +1,10 @@
 package Practica2;
 
+/** Esta clase es una clase abstract que sirve de madre de Masajista, Acompañante, Entrenador y Jugador
+ * @author : Jacobo San Mauro Martínez
+ * @version : 1.0
+ * */
+
 public abstract class MutxamelFC implements FuncionesIntegrantes {
 
     private String nombre;
@@ -9,10 +14,6 @@ public abstract class MutxamelFC implements FuncionesIntegrantes {
 
         this.nombre = nombre;
         this.edad = edad;
-
-    }
-
-    public MutxamelFC(){
 
     }
 

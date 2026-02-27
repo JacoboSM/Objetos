@@ -12,8 +12,10 @@ public class Entrenador extends MutxamelFC implements FuncionesIntegrantes, Acci
     public Entrenador(String nombre, int edad, String formacionPreferida, Equipos equipo) {
 
         super(nombre, edad);
-        this.formacionPreferida = formacionPreferida;
+        setFormacionPreferida(formacionPreferida);
         this.equipo = equipo;
+
+        System.out.println("Entrenador : " + getNombre() + " creado");
 
     }
 
@@ -46,7 +48,7 @@ public class Entrenador extends MutxamelFC implements FuncionesIntegrantes, Acci
     @Override
     public void celebrarGol(){
 
-        System.out.println(getNombre() + " se lleva las manos a la cabeza, empieza a correr y celebrando con los demas jugadores");
+        System.out.println(getNombre() + " se lleva las manos a la cabeza, empieza a correr y celebra con los demas jugadores");
 
     }
 
@@ -69,7 +71,15 @@ public class Entrenador extends MutxamelFC implements FuncionesIntegrantes, Acci
     }
 
     public void setFormacionPreferida(String formacionPreferida) {
-        this.formacionPreferida = formacionPreferida;
+        if (formacionPreferida.matches("[1-5]-[1-5]-[1-5]")){
+
+            this.formacionPreferida = formacionPreferida;
+
+        }else {
+
+            throw new FormatoFormacionException();
+
+        }
     }
 
     public Equipos getEquipo() {

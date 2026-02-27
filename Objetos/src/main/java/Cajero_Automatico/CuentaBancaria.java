@@ -59,13 +59,14 @@ public class CuentaBancaria {
 
     }
 
-    public boolean validarDatos (){ // me valida que sea mayor a 0 y que no me metan letras
+    public boolean validarDatos (){
 
         if (String.valueOf(cantidad).matches("^[0-9]{1,6}(\\.[0-9]{1,2})?$")){
 
 
 
         }
+        return true;
 
     }
 

@@ -1,17 +1,24 @@
 package Practica2;
 
+import java.util.ArrayList;
+
 public class Jugador extends MutxamelFC implements FuncionesIntegrantes, AccionesDeportivas {
 
     private int dorsal;
     private Equipos categoria;
     private Posiciones posicion;
+    private static ArrayList<Jugador> listajugadores = new ArrayList<>();
 
     public Jugador(String nombre, int edad, int dorsal, Equipos categoria, Posiciones posicion) {
 
         super(nombre, edad);
-        this.dorsal = dorsal;
         this.categoria = categoria;
         this.posicion = posicion;
+        setDorsal(dorsal);
+
+        listajugadores.add(this);
+
+        System.out.println("Jugador : " + getNombre() + " creado y añadido a la lista");
 
     }
 
@@ -68,12 +75,32 @@ public class Jugador extends MutxamelFC implements FuncionesIntegrantes, Accione
 
     }
 
+    public static ArrayList<Jugador> getListajugadores() {
+        return listajugadores;
+    }
+
+    public static void setListajugadores(ArrayList<Jugador> listajugadores) {
+        Jugador.listajugadores = listajugadores;
+    }
+
     public int getDorsal() {
         return dorsal;
     }
 
     public void setDorsal(int dorsal) {
+
+        for (Jugador jugador : listajugadores){
+
+            if (jugador != this && jugador.categoria == this.categoria && jugador.dorsal == dorsal){
+
+                throw new MismoDorsalMismoEquipoException();
+
+            }
+
+        }
+
         this.dorsal = dorsal;
+
     }
 
     public Equipos getCategoria() {
